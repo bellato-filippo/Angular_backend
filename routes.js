@@ -4,7 +4,6 @@ const plate_controller = require('./controllers/plate_controller');
 const ingredient_controller = require('./controllers/ingredient_controller');
 const has_controller = require('./controllers/has_controller');
 
-
 // get plate list done
 router.get('/plates', plate_controller.get_plate);
 // get ingredient list done
@@ -22,14 +21,16 @@ router.post('/has/new', has_controller.add_has);
 // get plate by id
 router.get('/plate/:id', plate_controller.get_plate_by_id);
 // get ingredients by plate id
-//router.get('/plate/:id/ingredients', ingredient_controller.get_plate_ingredients);
+router.get('/plate/:id/ingredients', ingredient_controller.get_plate_ingredients);
+// update plate name and price
+router.put('/plate/:id', plate_controller.update_plate_by_id);
 
 // delete plate by id
 router.delete('/plate/:id', plate_controller.remove_plate_by_id);
 // delete ingredient by id
 router.delete('/ingredient/:id', ingredient_controller.remove_ingredient_by_id);
 // delete has by id
-router.delete('/has/:plateId/:ingredientId', has_controller.remove_has_by_id);
+router.delete('/has/:plate/:ingredient', has_controller.remove_has_by_id);
 
 
 

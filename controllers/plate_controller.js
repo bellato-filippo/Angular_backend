@@ -39,6 +39,20 @@ const remove_plate_by_id = (req, res) => {
     .catch(err => console.log(err))
 }
 
+const update_plate_by_id = (req, res) => {
+    Plate.update(
+        {
+            name: req.body.name,
+            price: req.body.price
+        },
+        {where: {
+            id: req.params.id
+        }}
+    )
+    .then(plate => res.sendStatus(201))
+    .catch(err => console.log(err))
+}
+
 
 
 
@@ -46,5 +60,6 @@ module.exports = {
     get_plate,
     add_plate,
     get_plate_by_id,
-    remove_plate_by_id
+    remove_plate_by_id,
+    update_plate_by_id
 }
