@@ -9,14 +9,9 @@ const get_has = (req, res) => {
 }
 
 const add_has = (req, res) => {
-    data = {
-        plate: req.plate,
-        ingredient: req.ingredient
-    }
-    let {plate, ingredient} = data;
     Has.create({
-        plate,
-        ingredient
+        plate: req.body.plate,
+        ingredient: req.body.ingredient
     })
     .then(has => res.sendStatus(201))
     .catch(err => console.log(err));
@@ -25,8 +20,8 @@ const add_has = (req, res) => {
 const remove_has_by_id = (req, res) => {
     Has.destroy({
         where: { 
-            plate: req.params.plateId,
-            ingredient: req.params.ingredientId
+            plate: req.params.plate,
+            ingredient: req.params.ingredient
         }
     })
     .then(has => {
