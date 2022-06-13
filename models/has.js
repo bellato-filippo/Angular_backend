@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
 
+//creates the has table. SPecifies the foreign key
 const Has = db.define('has', {
     plate: {
         type: Sequelize.INTEGER,

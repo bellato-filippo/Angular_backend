@@ -16,9 +16,13 @@ db.authenticate()
 
 
 const app = express();
+// allows restricted resources on a web page to be requested
+// from another domain outside the domain from which the first resource was served
 app.use(cors());
+//deals with json
 app.use(express.json());
 
+//specifies the relation between ingredient and plate
 Plate.belongsToMany(Ingredient, {
     through: Has,
     foreignKey: 'plate'
@@ -33,6 +37,7 @@ app.get('/', (req, res) => {
     res.send("Prova");
 });
 
+//uses API routes
 app.use('/api', routes);
 
 const port = 3000;

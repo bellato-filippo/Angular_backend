@@ -1,5 +1,6 @@
 const Has = require('../models/has');
 
+// GET the list of has
 const get_has = (req, res) => {
     Has.findAll()
     .then(has => {
@@ -8,6 +9,7 @@ const get_has = (req, res) => {
     .catch(err => console.log(err))
 }
 
+// POST a new has. Parameters specified in the body
 const add_has = (req, res) => {
     Has.create({
         plate: req.body.plate,
@@ -17,6 +19,7 @@ const add_has = (req, res) => {
     .catch(err => console.log(err));
 }
 
+// REMOVE has. Parameters specified in the URI
 const remove_has_by_id = (req, res) => {
     Has.destroy({
         where: { 

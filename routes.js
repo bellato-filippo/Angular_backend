@@ -4,6 +4,8 @@ const plate_controller = require('./controllers/plate_controller');
 const ingredient_controller = require('./controllers/ingredient_controller');
 const has_controller = require('./controllers/has_controller');
 
+// delegates each route to the corresponding controller
+
 // get plate list done
 router.get('/plates', plate_controller.get_plate);
 // get ingredient list done

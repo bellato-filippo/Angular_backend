@@ -1,7 +1,7 @@
 const { redirect } = require('express/lib/response');
 const Plate = require('../models/plate');
 
-
+// GET all the plates
 const get_plate =  (req, res) => {
     Plate.findAll()
     .then(plates => {
@@ -10,6 +10,7 @@ const get_plate =  (req, res) => {
     .catch(err => console.log(err))
 }
 
+// POST a new plate. Parameters specified in the body. The ID auto increments automatically
 const add_plate = (req, res) => {
     Plate.create({
         name: req.body.name,
@@ -19,6 +20,7 @@ const add_plate = (req, res) => {
     .catch(err => console.log(err));
 }
 
+//GET plate by id. id specidied in the URI
 const get_plate_by_id = (req, res) => {
     Plate.findByPk(req.params.id)
     .then(plate => {
@@ -28,7 +30,7 @@ const get_plate_by_id = (req, res) => {
 }
 
 
-
+//REMOVE plate by id. id specified in the URI
 const remove_plate_by_id = (req, res) => {
     Plate.destroy({
         where: { id: req.params.id}
@@ -39,6 +41,7 @@ const remove_plate_by_id = (req, res) => {
     .catch(err => console.log(err))
 }
 
+//PUT plate by id. Changes name and price. id specified in the URI
 const update_plate_by_id = (req, res) => {
     Plate.update(
         {

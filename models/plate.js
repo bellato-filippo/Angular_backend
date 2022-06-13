@@ -3,6 +3,7 @@ const db = require('../database');
 const Has = require('./has');
 const Ingredient = require('./ingredient');
 
+//creates the plate table
 const Plate = db.define('plate', {
     id: {
         type: Sequelize.INTEGER,
